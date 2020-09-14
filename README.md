@@ -31,11 +31,25 @@ foo@host:~$
 ```
 
 ## Add your file types
-Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions:
+Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions.
+
+#### List files in zip archive via [als](https://www.nongnu.org/atool/)
 ```python
 $XONTRIB_ONEPATH_ACTIONS['file'].append({
     'name':  'ls zip file',                      # any name
     'check': lambda p: str(p).endswith('.zip'),  # check that file ends to .zip
     'act':   lambda p: (['als', str(p)],),       # als from atool to show list of zipped files
 })
+```
+
+#### Enable changing to a directory by entering the dirname (without the cd command)
+Note! You can enable this feature in Xonsh by setting [`$AUTO_CD = True`](https://xonsh.github.io/envvars.html#auto-cd).
+
+Or you can use onepath actions for this:
+```python
+$XONTRIB_ONEPATH_ACTIONS['dir'] = [{
+    'name':  'auto cd',
+    'check': lambda p: True,
+    'act':   lambda p: (['cd', str(p)],),
+}]
 ```
