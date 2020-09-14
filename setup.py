@@ -8,7 +8,7 @@ except (IOError, OSError):
     long_description = ''
 
 setup(
-    name='xontrib-path2act',
+    name='xontrib-onepath',
     version='0.0.1',
     license='BSD',
     author='anki',
@@ -21,11 +21,11 @@ setup(
     package_dir={'xontrib': 'xontrib'},
     package_data={'xontrib': ['*.xsh']},
     platforms='any',
-    url='https://github.com/anki-code/xontrib-path2act',
+    url='https://github.com/anki-code/xontrib-onepath',
     project_urls={
-        "Documentation": "https://github.com/anki-code/xontrib-path2act/blob/master/README.md",
-        "Code": "https://github.com/anki-code/xontrib-path2act",
-        "Issue tracker": "https://github.com/anki-code/xontrib-path2act/issues",
+        "Documentation": "https://github.com/anki-code/xontrib-onepath/blob/master/README.md",
+        "Code": "https://github.com/anki-code/xontrib-onepath",
+        "Issue tracker": "https://github.com/anki-code/xontrib-onepath/issues",
     },
     classifiers=[
         'Environment :: Console',
