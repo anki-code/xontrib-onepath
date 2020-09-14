@@ -1,3 +1,7 @@
+#### Development in progress but you can try it with https://github.com/xonsh/xonsh/pull/3768
+
+---------
+
 <p align="center">  
 Use path without any leading commands (like ls, cat, etc) in <a href="https://xon.sh">xonsh shell</a>.
 </p>
