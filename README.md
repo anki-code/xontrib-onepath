@@ -43,9 +43,7 @@ $XONTRIB_ONEPATH_ACTIONS['file'].append({
 ```
 
 #### Enable changing to a directory by entering the dirname (without the cd command)
-Note! You can enable this feature in Xonsh by setting [`$AUTO_CD = True`](https://xonsh.github.io/envvars.html#auto-cd).
-
-Or you can use onepath actions for this:
+Note! You can enable this feature in Xonsh by setting [`$AUTO_CD = True`](https://xonsh.github.io/envvars.html#auto-cd). Or you can use onepath actions for this:
 ```python
 $XONTRIB_ONEPATH_ACTIONS['dir'] = [{
     'name':  'auto cd',
