@@ -30,7 +30,7 @@ $ /bin/bash  # executable still works as executable
 foo@host:~$
 ```
 
-## Add your file types
+## Customize actions
 Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions.
 
 #### List files in zip archive via [als](https://www.nongnu.org/atool/)
