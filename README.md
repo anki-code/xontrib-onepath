@@ -20,14 +20,14 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 ## Example
 ```bash
 $ /home  # ls for directories
-foo bar
+alex
 
-$ ./onepath.xsh  # head for text files
-import os
-...
+$ /etc/lsb-release  # head for text files
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=20.04
 
-$ /bin/bash  # executable still works as executable
-foo@host:~$
+$ /usr/bin/uname  # executable still works as executable
+Linux
 ```
 
 ## Customize actions
@@ -43,7 +43,7 @@ $XONTRIB_ONEPATH_ACTIONS['file'].append({
 ```
 
 #### Enable changing to a directory by entering the dirname (without the cd command)
-Note! You can enable this feature in Xonsh by setting [`$AUTO_CD = True`](https://xonsh.github.io/envvars.html#auto-cd). Or you can use onepath actions for this:
+You can enable this feature in Xonsh by setting [`$AUTO_CD = True`](https://xonsh.github.io/envvars.html#auto-cd). Or you can use onepath actions for this:
 ```python
 $XONTRIB_ONEPATH_ACTIONS['dir'] = [{
     'name':  'auto cd',
