@@ -28,7 +28,7 @@ if not __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS'):
 _act = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
 
 
-@events.on_subproc_precommand
+@events.on_run_subproc
 def _onepath(cmds, **kw):
     if len(cmds) == 1 and len(cmds[0]) == 1:
         paths = cmds[0][0]
