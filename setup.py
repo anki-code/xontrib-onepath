@@ -17,6 +17,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     python_requires='>=3.6',
+    install_requires=['xonsh>=0.9.21'],
     packages=['xontrib'],
     package_dir={'xontrib': 'xontrib'},
     package_data={'xontrib': ['*.xsh']},
