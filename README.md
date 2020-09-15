@@ -1,4 +1,13 @@
-#### Development in progress but you can try it with https://github.com/xonsh/xonsh/pull/3768
+#### While [development in progress](https://github.com/xonsh/xonsh/pull/3768) you can try this way:
+```bash
+bash
+cd /tmp && git clone -b patch-2 https://github.com/anki-code/xonsh
+pip install -U ./xonsh
+pip install -U git+https://github.com/anki-code/xontrib-onepath
+xonsh
+xontrib load onepath
+/home
+```
 
 ---------
 
