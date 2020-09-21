@@ -3,7 +3,7 @@ When you click to a file or folder in graphical OS they will be opened in associ
 </p>
 
 <p align="center">  
-If you like the idea of bar theme click ⭐ on the repo and stay tuned.
+If you like the idea of bar theme click ⭐ on the repo and stay tuned by watching releases.
 </p>
 
 ## Install
