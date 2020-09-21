@@ -1,4 +1,13 @@
-#### While [development in progress](https://github.com/xonsh/xonsh/pull/3768) you can try this way:
+<p align="center">
+When you click to a file or folder in graphical OS they will be opened in associated app. The xontrib-onepath brings the same logic for the <a href="https://github.com/xonsh/xonsh/">xonsh shell</a>. Type the filename or path without preceding command and an associated action will be executed.<br /> The actions are customizable.
+</p>
+
+<p align="center">  
+If you like the idea of bar theme click ⭐ on the repo and stay tuned.
+</p>
+
+## Install
+While [development in progress](https://github.com/xonsh/xonsh/pull/3768) you can try this way:
 ```bash
 bash
 cd /tmp && git clone -b patch-2 https://github.com/anki-code/xonsh
@@ -9,17 +18,7 @@ xontrib load onepath
 /home
 ```
 
----------
-
-<p align="center">  
-Use path without any leading commands (like ls, cat, etc) in <a href="https://xon.sh">xonsh shell</a>.
-</p>
-
-<p align="center">  
-If you like the idea of bar theme click ⭐ on the repo and stay tuned.
-</p>
-
-## Install
+In the future:
 ```
 xpip install -U xontrib-onepath
 echo 'xontrib load onepath' >> ~/.xonshrc
