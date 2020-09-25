@@ -1,10 +1,10 @@
-import os, shlex
+import os, shlex, magic
 from pathlib import Path
 
 _default_actions = {
     'inode/directory': 'ls',
     'text/plain': 'vim',
-    'image/png': 'xdg-open'
+    'image/': 'xdg-open'
 }
 
 if not __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS'):
@@ -29,36 +29,30 @@ def onepath(cmd, **kw):
         return cmd
 
     debug = __xonsh__.env.get('XONTRIB_ONEPATH_DEBUG', False)
-    path = args[0]
-    file_type = None
-    s = 0
-    while file_type in [None, 'inode/symlink'] and s < 10:
-        path = Path(path).expanduser()
-        if not path.exists() or ( path.is_file() and os.access(path, os.X_OK) ):
-            return cmd
-
-        file_type = _get_subproc_output(['file', '--mime-type', '--brief', path], debug).strip()
-        if file_type == 'inode/symlink':
-            path = _get_subproc_output(['readlink', '-f', path], debug).strip()
-        else:
-            break
-        s += 1
-
-    if s == 10:
-        # symlink recursion
+    path = Path(args[0]).expanduser().resolve()
+    if not path.exists() or ( path.is_file() and os.access(path, os.X_OK) ):
         return cmd
 
+    if __xonsh__.env.get('XONTRIB_ONEPATH_SUBPROC_FILE', False):
+        file_type = _get_subproc_output(['file', '--mime-type', '--brief', path], debug).strip()
+    else:
+        try:
+            file_type = magic.from_file(str(path), mime=True)
+        except IsADirectoryError:
+            file_type = 'inode/directory'
+
+    file_type_group = file_type.split('/')[0] + '/' if '/' in file_type else None
     path_filename = None if path.is_dir() else path.name
     path_suffix = path.suffix
     path_suffix_key = '*' + path.suffix
     file_type_suffix = file_type + path_suffix
     action = None
-    for k in [path_filename, path_suffix_key, file_type_suffix, file_type]:
+    for k in [path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group]:
         if k in __xonsh__.env['XONTRIB_ONEPATH_ACTIONS']:
             action = __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'][k]
             break
 
     if action:
-        return f'{action} {path}\n'
+        return shlex.join([action, str(path)]) + '\n'
     else:
         return cmd

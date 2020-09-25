@@ -16,9 +16,9 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 ## Default actions
 | Type  | Action  |
 |---|---|
-| inode/directory  | `ls`  | 
-| text/plain | `vim`|
-| image/png | `xdg-open` |
+| `inode/directory`  | `ls`  | 
+| `text/plain` | `vim`|
+| `image/` | `xdg-open` |
 
 Help to add more types and best default actions. PRs are welcome!
 
@@ -34,6 +34,18 @@ $ ~/Downloads/logo.png
 # xontrib run: xdg-open ~/Downloads/logo.png 
 ```
 
+## Type format
+
+| Priority | Format  | Example  |
+|---|---|---|
+| 1 | File name.                        | `file.txt`       | 
+| 2 | File extension.                   | `*.txt`          |
+| 3 | MIME type/subtype and extension.  | `text/plain.txt` |
+| 4 | MIME type/subtype.                | `text/plain`     |
+| 5 | MIME type.                        | `text/`          |
+
+To get MIME type for the file run `file --mime-type --brief <file>`.
+
 ## Customize actions
 Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions:
 
@@ -44,7 +56,6 @@ $XONTRIB_ONEPATH_ACTIONS['text/plain.txt'] = 'less'  # less for plain text *.txt
 $XONTRIB_ONEPATH_ACTIONS['inode/directory'] = 'cd'   # the same as xonsh $AUTO_CD=True
 $XONTRIB_ONEPATH_ACTIONS['application/zip'] = 'als'  # list files in zip file using atool
 ```
-To get file type for new file run `file --mime-type --brief <file>`.
 
 ## Complex actions
 
