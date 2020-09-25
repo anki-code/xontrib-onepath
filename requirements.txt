@@ -1,1 +1,1 @@
-xonsh >= 0.9.21
+xonsh
