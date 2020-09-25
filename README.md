@@ -14,7 +14,7 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 ```
 
 ## Default actions
-| File type  | Action  |
+| Type  | Action  |
 |---|---|
 | inode/directory  | `ls`  | 
 | text/plain | `vim`|
