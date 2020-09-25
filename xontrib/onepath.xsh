@@ -47,7 +47,7 @@ def onepath(cmd, **kw):
     path_suffix_key = '*' + path.suffix
     file_type_suffix = file_type + path_suffix
     action = None
-    for k in [path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group]:
+    for k in [path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group, '*']:
         if k in __xonsh__.env['XONTRIB_ONEPATH_ACTIONS']:
             action = __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'][k]
             break

@@ -37,12 +37,13 @@ $ ~/Downloads/logo.png
 ## Type format
 
 | Priority | Format  | Example  |
-|---|---|---|
+|----------|---------|----------|
 | 1 | File name.                        | `file.txt`       | 
 | 2 | File extension.                   | `*.txt`          |
 | 3 | MIME type/subtype and extension.  | `text/plain.txt` |
 | 4 | MIME type/subtype.                | `text/plain`     |
 | 5 | MIME type.                        | `text/`          |
+| 6 | Any file.                         | `*`              |
 
 To get MIME type for the file run `file --mime-type --brief <file>`.
 
