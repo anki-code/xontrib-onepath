@@ -7,7 +7,7 @@ If you like the idea of bar theme click ⭐ on the repo and stay tuned by watchi
 </p>
 
 ## Install
-```
+```bash
 xpip install -U xontrib-onepath
 echo 'xontrib load onepath' >> ~/.xonshrc
 # Reload xonsh
@@ -21,6 +21,18 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 | image/png | `xdg-open` |
 
 Help to add more types and best default actions. PRs are welcome!
+
+## Example
+```bash
+$ /
+# xontrib run: ls /
+
+$ ~/.xonshrc
+# xontrib run: vim ~/.xonshrc
+
+$ ~/Downloads/logo.png
+# xontrib run: xdg-open ~/Downloads/logo.png 
+```
 
 ## Customize actions
 Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions:
