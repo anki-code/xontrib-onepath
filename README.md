@@ -44,5 +44,6 @@ def _view_csv_with_pandas(args):
 
 aliases['view_csv_with_pandas'] = _view_csv_with_pandas
 del _view_csv_with_pandas
+
 $XONTRIB_ONEPATH_ACTIONS['application/csv'] = 'view_csv_with_pandas'
 ```
