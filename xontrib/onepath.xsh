@@ -41,13 +41,14 @@ def onepath(cmd, **kw):
         except IsADirectoryError:
             file_type = 'inode/directory'
 
+    file_or_dir = 'FILE' if path.is_file() else 'DIR'
     file_type_group = file_type.split('/')[0] + '/' if '/' in file_type else None
     path_filename = None if path.is_dir() else path.name
     path_suffix = path.suffix
     path_suffix_key = '*' + path.suffix
     file_type_suffix = file_type + path_suffix
     action = None
-    for k in [path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group, '*']:
+    for k in [path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group, file_or_dir, '*']:
         if k in __xonsh__.env['XONTRIB_ONEPATH_ACTIONS']:
             action = __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'][k]
             break

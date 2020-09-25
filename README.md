@@ -43,7 +43,9 @@ $ ~/Downloads/logo.png
 | 3 | MIME type/subtype and extension.  | `text/plain.txt` |
 | 4 | MIME type/subtype.                | `text/plain`     |
 | 5 | MIME type.                        | `text/`          |
-| 6 | Any file.                         | `*`              |
+| 6 | Any file.                         | `FILE`           |
+| 7 | Any directory.                    | `DIR`            |
+| 8 | Any file or directory.            | `*`              |
 
 To get MIME type for the file run `file --mime-type --brief <file>`.
 
