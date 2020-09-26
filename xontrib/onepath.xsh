@@ -1,5 +1,6 @@
 import os, shlex, magic
 from pathlib import Path
+from shutil import which
 
 _default_actions = {
     'DIR': 'ls',
@@ -25,7 +26,7 @@ def _get_subproc_output(cmds, debug=False):
 @events.on_transform_command
 def onepath(cmd, **kw):
     args = shlex.split(cmd)
-    if len(args) != 1:
+    if len(args) != 1 or which(args[0]):
         return cmd
 
     debug = __xonsh__.env.get('XONTRIB_ONEPATH_DEBUG', False)
