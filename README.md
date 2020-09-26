@@ -73,3 +73,15 @@ del _view_csv_with_pandas
 
 $XONTRIB_ONEPATH_ACTIONS['application/csv'] = 'view_csv_with_pandas'
 ```
+
+## Known issues
+### NTFS in Linux: all files have execute permission
+If you mount NTFS partition with default permissions then all files will have execute permission 
+and `onepath` will execute them instead of action. The right way 
+is to [change default `/etc/fstab` settings](https://askubuntu.com/questions/113733/how-do-i-correctly-mount-a-ntfs-partition-in-etc-fstab).
+Example:
+```bash
+sudo umount /d
+sudo mount -o uid=1000,gid=1000,dmask=027,fmask=137 /d 
+ls -la /d
+```
