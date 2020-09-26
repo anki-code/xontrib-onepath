@@ -26,11 +26,13 @@ path will be used to make action. Default actions:
 
 Help to add more types and best default actions. PRs are welcome!
 
-## Example
+## Examples
 ```bash
 $ /                      # ls /
 $ ~/.xonshrc             # vim ~/.xonshrc
-$ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png 
+$ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
+$ git                    # git
+$ ./git                  # ls ./git
 ```
 
 ## Type format
