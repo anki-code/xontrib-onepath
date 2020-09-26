@@ -33,15 +33,15 @@ $ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
 
 | Priority | Format  | Example  |
 |----------|---------|----------|
-| 1 | Full path to file.                | `/etc/passwd`    |
-| 2 | File name.                        | `file.txt`       | 
-| 3 | File extension.                   | `*.txt`          |
-| 4 | MIME type/subtype and extension.  | `text/plain.txt` |
-| 5 | MIME type/subtype.                | `text/plain`     |
-| 6 | MIME type.                        | `text/`          |
-| 7 | Any file.                         | `FILE`           |
-| 8 | Any directory.                    | `DIR`            |
-| 9 | Any file or directory.            | `*`              |
+| 1 | Full path to file.                | `/etc/passwd`     |
+| 2 | File name.                        | `file.txt`        | 
+| 3 | File extension.                   | `*.txt`           |
+| 4 | MIME type/subtype and extension.  | `text/plain.txt`  |
+| 5 | MIME type/subtype.                | `text/plain`      |
+| 6 | MIME type.                        | `text/`           |
+| 7 | Any file.                         | `FILE` (constant) |
+| 8 | Any directory.                    | `DIR` (constant)  |
+| 9 | Any file or directory.            | `*` (constant)    |
 
 To get MIME type for the file run `file --mime-type --brief <file>`.
 
