@@ -2,7 +2,7 @@ import os, shlex, magic
 from pathlib import Path
 
 _default_actions = {
-    'inode/directory': 'ls',
+    'DIR': 'ls',
     'text/plain': 'vim',
     'image/': 'xdg-open'
 }
