@@ -24,14 +24,9 @@ Help to add more types and best default actions. PRs are welcome!
 
 ## Example
 ```bash
-$ /
-# xontrib run: ls /
-
-$ ~/.xonshrc
-# xontrib run: vim ~/.xonshrc
-
-$ ~/Downloads/logo.png
-# xontrib run: xdg-open ~/Downloads/logo.png 
+$ /                      # xontrib run: ls /
+$ ~/.xonshrc             # xontrib run: vim ~/.xonshrc
+$ ~/Downloads/logo.png   # xontrib run: xdg-open ~/Downloads/logo.png 
 ```
 
 ## Type format
