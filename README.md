@@ -14,6 +14,10 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 ```
 
 ## Default actions
+If file has execution permission it will be executed. If typed command is a registered name (i.e. `git`) 
+and `which` command returns the path (i.e. `/usr/bin/git`) it will be executed. In other case the typed
+path will be used to make action. Default actions: 
+
 | Type  | Action  |
 |---|---|
 | `inode/directory`  | `ls`  | 
