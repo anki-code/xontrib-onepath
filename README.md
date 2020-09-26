@@ -20,7 +20,7 @@ path will be used to make action. Default actions:
 
 | Type  | Action  |
 |---|---|
-| `inode/directory`  | `ls`  | 
+| `DIR`  | `ls`  | 
 | `text/plain` | `vim`|
 | `image/` | `xdg-open` |
 

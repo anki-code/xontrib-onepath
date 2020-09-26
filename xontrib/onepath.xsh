@@ -42,6 +42,7 @@ def onepath(cmd, **kw):
         except IsADirectoryError:
             file_type = 'inode/directory'
 
+    file_type = 'DIR' if file_type == 'inode/directory' else file_type
     full_path = str(path)
     path_filename = None if path.is_dir() else path.name
     path_suffix_key = '*' + path.suffix
