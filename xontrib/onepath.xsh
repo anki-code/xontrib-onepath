@@ -1,17 +1,18 @@
-import os, shlex, magic
+import os, shlex
+from magic import from_file as mime
 from pathlib import Path
 from shutil import which
 
-_default_actions = {
-    'DIR': 'ls',
-    'text/plain': 'vim',
-    'image/': 'xdg-open'
-}
-
 if not __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS'):
-    __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'] = _default_actions
+    _actions = {
+        'DIR': 'ls',
+        'text/plain': 'vim'
+    }
 
-_act = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
+    if __xonsh__.env.get('DISPLAY', False):
+        _actions['image/'] = 'xdg-open'
+
+    __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'] = _actions
 
 
 def _get_subproc_output(cmds, debug=False):
@@ -26,7 +27,7 @@ def _get_subproc_output(cmds, debug=False):
 @events.on_transform_command
 def onepath(cmd, **kw):
     args = shlex.split(cmd)
-    if len(args) != 1 or which(args[0]):
+    if len(args) != 1 or which(args[0]) or args[0] in aliases:
         return cmd
 
     debug = __xonsh__.env.get('XONTRIB_ONEPATH_DEBUG', False)
@@ -38,7 +39,7 @@ def onepath(cmd, **kw):
         file_type = _get_subproc_output(['file', '--mime-type', '--brief', path], debug).strip()
     else:
         try:
-            file_type = magic.from_file(str(path), mime=True)
+            file_type = mime(str(path), mime=True)
         except IsADirectoryError:
             file_type = 'inode/directory'
 

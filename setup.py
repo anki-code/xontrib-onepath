@@ -9,11 +9,11 @@ except (IOError, OSError):
 
 setup(
     name='xontrib-onepath',
-    version='0.1.1',
+    version='0.1.2',
     license='BSD',
     author='anki',
     author_email='author@example.com',
-    description="Path to action.",
+    description="Associate files with app or alias and run it without preceding commands in xonsh shell.",
     long_description=long_description,
     long_description_content_type='text/markdown',
     python_requires='>=3.6',
