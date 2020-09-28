@@ -58,6 +58,6 @@ def onepath(cmd, **kw):
             break
 
     if action:
-        return shlex.join([action, str(path)]) + '\n'
+        return f'{action} {shlex.quote(str(path))}\n'
     else:
         return cmd
