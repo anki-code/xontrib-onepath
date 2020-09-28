@@ -6,7 +6,7 @@ from shutil import which
 if not __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS'):
     _actions = {
         'DIR': 'ls',
-        'text/plain': 'vim'
+        'text/': 'vim'
     }
 
     if __xonsh__.env.get('DISPLAY', False):

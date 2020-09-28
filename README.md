@@ -21,7 +21,7 @@ path will be used to make action. Default actions:
 | Type  | Action  |
 |---|---|
 | `DIR`  | `ls`  | 
-| `text/plain` | `vim`|
+| `text/` | `vim`|
 | `image/` | `xdg-open` |
 
 Help to add more types and best default actions. PRs are welcome!
