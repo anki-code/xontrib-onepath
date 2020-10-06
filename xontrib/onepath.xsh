@@ -27,7 +27,10 @@ def _get_subproc_output(cmds, debug=False):
 
 @events.on_transform_command
 def onepath(cmd, **kw):
-    args = shlex.split(cmd)
+    try:
+        args = shlex.split(cmd)
+    except:
+        return cmd
     if len(args) != 1 or which(args[0]) or args[0] in aliases:
         return cmd
 
