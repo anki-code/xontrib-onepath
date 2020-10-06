@@ -3,7 +3,8 @@ from magic import from_file as mime
 from pathlib import Path
 from shutil import which
 
-if not __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS'):
+_env_actions = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
+if not _env_actions or type(_env_actions) != dict:
     _actions = {
         'DIR': 'ls',
         'text/': 'vim'
