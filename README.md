@@ -53,7 +53,7 @@ Help to add more types and best default actions. PRs are welcome!
 
 To get MIME type for the file run `file --mime-type --brief <file>`.
 
-## Example of actions
+## Examples of actions
 
 Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions.
 If you need more complex actions use [callable xonsh aliases](https://xon.sh/tutorial.html#callable-aliases).
