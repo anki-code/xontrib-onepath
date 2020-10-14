@@ -72,7 +72,7 @@ $XONTRIB_ONEPATH_ACTIONS['application/zip'] = 'als'  # list files in zip file us
 ```python
 $XONTRIB_ONEPATH_ACTIONS = {'*.xsh':'xonsh', **$XONTRIB_ONEPATH_ACTIONS}  # Insert on top
 xontrib load onepath
-script.xsh           # the same as:  chmod +x script.xsh && ./script.xsh
+script.xsh                            # the same as:  chmod +x script.xsh && ./script.xsh
 ```
 
 #### View CSV tables using pandas
