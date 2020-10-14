@@ -13,6 +13,16 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 # Reload xonsh
 ```
 
+## Examples
+```bash
+$ /                      # ls /
+$ .xonshrc               # vim ~/.xonshrc
+$ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
+$ git                    # git
+$ ./git                  # ls ./git
+$ executable_script      # ./executable_script
+```
+
 ## Default actions
 If typed command is a registered name (i.e. `git`) and `which` command returns the path (i.e. `/usr/bin/git`) it will be executed. 
 In other case the typed path will be used to make action. Default actions: 
@@ -25,16 +35,6 @@ In other case the typed path will be used to make action. Default actions:
 | 4 | `image/` | `xdg-open` |
 
 Help to add more types and best default actions. PRs are welcome!
-
-## Examples
-```bash
-$ /                      # ls /
-$ .xonshrc               # vim ~/.xonshrc
-$ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
-$ git                    # git
-$ ./git                  # ls ./git
-$ executable_script      # ./executable_script
-```
 
 ## File types
 
