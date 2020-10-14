@@ -21,6 +21,7 @@ path will be used to make action. Default actions:
 | Type  | Action  |
 |---|---|
 | `DIR`  | `ls`  | 
+| `XFILE`  | `{RUN}`  | 
 | `text/` | `vim`|
 | `image/` | `xdg-open` |
 
@@ -35,19 +36,20 @@ $ git                    # git
 $ ./git                  # ls ./git
 ```
 
-## Type format
+## Types
 
-| Priority | Format  | Example  |
-|----------|---------|----------|
-| 1 | Full path to file.                | `/etc/passwd`     |
+| # | Format  | Example  |
+|---|---------|----------|
+| 1 | Full path to file.                | `~/.xonshrc`     |
 | 2 | File name.                        | `file.txt`        | 
 | 3 | File extension.                   | `*.txt`           |
 | 4 | MIME type/subtype and extension.  | `text/plain.txt`  |
 | 5 | MIME type/subtype.                | `text/plain`      |
 | 6 | MIME type.                        | `text/`           |
 | 7 | Any file.                         | `FILE` (constant) |
-| 8 | Any directory.                    | `DIR` (constant)  |
-| 9 | Any file or directory.            | `*` (constant)    |
+| 8 | Any executable file.              | `XFILE` (constant)|
+| 9 | Any directory.                    | `DIR` (constant)  |
+| 10| Any file or directory.            | `*` (constant)    |
 
 To get MIME type for the file run `file --mime-type --brief <file>`.
 
@@ -59,12 +61,15 @@ $XONTRIB_ONEPATH_ACTIONS['.xonshrc'] = 'vim'         # vim for `.xonshrc` file
 $XONTRIB_ONEPATH_ACTIONS['*.log'] = 'tail'           # tail for text type *.log files
 $XONTRIB_ONEPATH_ACTIONS['text/plain.txt'] = 'less'  # less for plain text *.txt files 
 $XONTRIB_ONEPATH_ACTIONS['DIR'] = 'cd'               # the same as xonsh $AUTO_CD=True
+$XONTRIB_ONEPATH_ACTIONS['XFILE'] = '{RUN}'          # run any executable file
 $XONTRIB_ONEPATH_ACTIONS['application/zip'] = 'als'  # list files in zip file using atool
 ```
 
 ## Complex actions
 
-If you need more complex actions use [callable xonsh aliases](https://xon.sh/tutorial.html#callable-aliases):
+If you need more complex actions use [callable xonsh aliases](https://xon.sh/tutorial.html#callable-aliases).
+
+#### View CSV tables via pandas
 ```python
 import pandas as pd
 def _view_csv_with_pandas(args):
@@ -74,6 +79,18 @@ aliases['view_csv_with_pandas'] = _view_csv_with_pandas
 del _view_csv_with_pandas
 
 $XONTRIB_ONEPATH_ACTIONS['application/csv'] = 'view_csv_with_pandas'
+```
+
+#### cd & ls
+```python
+def _cdls(args):
+     cd @(args[0])
+     if int($(ls | wc -l).strip()) < 100:
+         ls --group-directories-first -a --color
+aliases['cdls'] = _cdls
+del _cdls
+
+$XONTRIB_ONEPATH_ACTIONS['DIR'] = 'cdls'
 ```
 
 ## Known issues

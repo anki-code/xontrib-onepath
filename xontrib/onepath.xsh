@@ -7,6 +7,7 @@ _env_actions = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
 if not _env_actions or type(_env_actions) != dict:
     _actions = {
         'DIR': 'ls',
+        'XFILE': '{RUN}',
         'text/': 'vim'
     }
 
@@ -36,7 +37,7 @@ def onepath(cmd, **kw):
 
     debug = __xonsh__.env.get('XONTRIB_ONEPATH_DEBUG', False)
     path = Path(args[0]).expanduser().resolve()
-    if not path.exists() or ( path.is_file() and os.access(path, os.X_OK) ):
+    if not path.exists():
         return cmd
 
     if __xonsh__.env.get('XONTRIB_ONEPATH_SUBPROC_FILE', False):
@@ -52,16 +53,20 @@ def onepath(cmd, **kw):
     path_filename = None if path.is_dir() else path.name
     path_suffix_key = '*' + path.suffix
     file_or_dir = 'FILE' if path.is_file() else 'DIR'
+    xfile = 'XFILE' if os.access(path, os.X_OK) else 'FILE'
     file_type_group = file_type.split('/')[0] + '/' if '/' in file_type else None
     path_suffix = path.suffix
     file_type_suffix = file_type + path_suffix
     action = None
-    for k in [full_path, path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group, file_or_dir, '*']:
-        if k in __xonsh__.env['XONTRIB_ONEPATH_ACTIONS']:
+    for k in __xonsh__.env['XONTRIB_ONEPATH_ACTIONS']:
+        if k in [full_path, path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group, file_or_dir, xfile, '*']:
             action = __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'][k]
             break
 
     if action:
-        return f'{action} {shlex.quote(str(path))}\n'
+        if action == '{RUN}':
+            return f'{shlex.quote(str(path))}\n'
+        else:
+            return f'{action} {shlex.quote(str(path))}\n'
     else:
         return cmd
