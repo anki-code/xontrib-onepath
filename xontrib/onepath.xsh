@@ -6,8 +6,8 @@ from shutil import which
 _env_actions = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
 if not _env_actions or type(_env_actions) != dict:
     _actions = {
-        'DIR': 'ls',
-        'XFILE': '{RUN}',
+        '<DIR>': 'ls',
+        '<XFILE>': '<RUN>',
         'text/': 'vim'
     }
 
@@ -48,12 +48,12 @@ def onepath(cmd, **kw):
         except IsADirectoryError:
             file_type = 'inode/directory'
 
-    file_type = 'DIR' if file_type == 'inode/directory' else file_type
+    file_type = '<DIR>' if file_type == 'inode/directory' else file_type
     full_path = str(path)
     path_filename = None if path.is_dir() else path.name
     path_suffix_key = '*' + path.suffix
-    file_or_dir = 'FILE' if path.is_file() else 'DIR'
-    xfile = 'XFILE' if os.access(path, os.X_OK) else 'FILE'
+    file_or_dir = '<FILE>' if path.is_file() else '<DIR>'
+    xfile = '<XFILE>' if path.is_file() and os.access(path, os.X_OK) else '<NX>'
     file_type_group = file_type.split('/')[0] + '/' if '/' in file_type else None
     path_suffix = path.suffix
     file_type_suffix = file_type + path_suffix
@@ -64,7 +64,7 @@ def onepath(cmd, **kw):
             break
 
     if action:
-        if action == '{RUN}':
+        if action == '<RUN>':
             return f'{shlex.quote(str(path))}\n'
         else:
             return f'{action} {shlex.quote(str(path))}\n'

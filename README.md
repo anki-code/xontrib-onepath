@@ -14,31 +14,31 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 ```
 
 ## Default actions
-If file has execution permission it will be executed. If typed command is a registered name (i.e. `git`) 
-and `which` command returns the path (i.e. `/usr/bin/git`) it will be executed. In other case the typed
-path will be used to make action. Default actions: 
+If typed command is a registered name (i.e. `git`) and `which` command returns the path (i.e. `/usr/bin/git`) it will be executed. 
+In other case the typed path will be used to make action. Default actions: 
 
-| Type  | Action  |
-|---|---|
-| `DIR`  | `ls`  | 
-| `XFILE`  | `{RUN}`  | 
-| `text/` | `vim`|
-| `image/` | `xdg-open` |
+| Priority | Type  | Action  |
+|---|---|---|
+| 1 | `<DIR>`  | `ls`  | 
+| 2 | `<XFILE>`  | `<RUN>`  | 
+| 3 | `text/` | `vim`|
+| 4 | `image/` | `xdg-open` |
 
 Help to add more types and best default actions. PRs are welcome!
 
 ## Examples
 ```bash
 $ /                      # ls /
-$ ~/.xonshrc             # vim ~/.xonshrc
+$ .xonshrc               # vim ~/.xonshrc
 $ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
 $ git                    # git
 $ ./git                  # ls ./git
+$ executable_script      # ./executable_script
 ```
 
-## Types
+## File types
 
-| # | Format  | Example  |
+| # | Type    | Example  |
 |---|---------|----------|
 | 1 | Full path to file.                | `~/.xonshrc`     |
 | 2 | File name.                        | `file.txt`        | 
@@ -46,30 +46,36 @@ $ ./git                  # ls ./git
 | 4 | MIME type/subtype and extension.  | `text/plain.txt`  |
 | 5 | MIME type/subtype.                | `text/plain`      |
 | 6 | MIME type.                        | `text/`           |
-| 7 | Any file.                         | `FILE` (constant) |
-| 8 | Any executable file.              | `XFILE` (constant)|
-| 9 | Any directory.                    | `DIR` (constant)  |
+| 7 | Any file.                         | `<FILE>` (constant) |
+| 8 | Any executable file.              | `<XFILE>` (constant)|
+| 9 | Any directory.                    | `<DIR>` (constant)  |
 | 10| Any file or directory.            | `*` (constant)    |
 
 To get MIME type for the file run `file --mime-type --brief <file>`.
 
-## Customize actions
-Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions:
+## Example of actions
 
+Use `XONTRIB_ONEPATH_ACTIONS` environment variable to add new actions.
+If you need more complex actions use [callable xonsh aliases](https://xon.sh/tutorial.html#callable-aliases).
+
+### Simple actions
 ```python
 $XONTRIB_ONEPATH_ACTIONS['.xonshrc'] = 'vim'         # vim for `.xonshrc` file
 $XONTRIB_ONEPATH_ACTIONS['*.log'] = 'tail'           # tail for text type *.log files
 $XONTRIB_ONEPATH_ACTIONS['text/plain.txt'] = 'less'  # less for plain text *.txt files 
-$XONTRIB_ONEPATH_ACTIONS['DIR'] = 'cd'               # the same as xonsh $AUTO_CD=True
-$XONTRIB_ONEPATH_ACTIONS['XFILE'] = '{RUN}'          # run any executable file
+$XONTRIB_ONEPATH_ACTIONS['<DIR>'] = 'cd'             # the same as xonsh $AUTO_CD=True
 $XONTRIB_ONEPATH_ACTIONS['application/zip'] = 'als'  # list files in zip file using atool
 ```
 
-## Complex actions
+#### Run xsh regardless the execution permissions
 
-If you need more complex actions use [callable xonsh aliases](https://xon.sh/tutorial.html#callable-aliases).
+```python
+$ $XONTRIB_ONEPATH_ACTIONS = {'*.xsh':'xonsh', **$XONTRIB_ONEPATH_ACTIONS}
+$ xontrib load onepath
+$ script.xsh           # the same as:  chmod +x script.xsh && ./script.xsh
+```
 
-#### View CSV tables via pandas
+#### View CSV tables using pandas
 ```python
 import pandas as pd
 def _view_csv_with_pandas(args):
@@ -90,7 +96,7 @@ def _cdls(args):
 aliases['cdls'] = _cdls
 del _cdls
 
-$XONTRIB_ONEPATH_ACTIONS['DIR'] = 'cdls'
+$XONTRIB_ONEPATH_ACTIONS['<DIR>'] = 'cdls'
 ```
 
 ## Known issues
