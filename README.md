@@ -70,7 +70,7 @@ $XONTRIB_ONEPATH_ACTIONS['application/zip'] = 'als'  # list files in zip file us
 #### Run xsh regardless the execution permissions
 
 ```python
-$ $XONTRIB_ONEPATH_ACTIONS = {'*.xsh':'xonsh', **$XONTRIB_ONEPATH_ACTIONS}  # Insert the key on top
+$ $XONTRIB_ONEPATH_ACTIONS = {'*.xsh':'xonsh', **$XONTRIB_ONEPATH_ACTIONS}  # Insert on top
 $ xontrib load onepath
 $ script.xsh           # the same as:  chmod +x script.xsh && ./script.xsh
 ```
