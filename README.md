@@ -15,12 +15,12 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 
 ## Examples
 ```bash
-$ /                      # ls /
-$ .xonshrc               # vim ~/.xonshrc
-$ ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
-$ git                    # git
-$ ./git                  # ls ./git
-$ executable_script      # ./executable_script
+/                      # ls /
+.xonshrc               # vim ~/.xonshrc
+~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
+git                    # git
+./git                  # ls ./git
+executable_script      # ./executable_script
 ```
 
 ## Default actions
