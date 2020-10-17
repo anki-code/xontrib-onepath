@@ -21,7 +21,7 @@ executable_script      # ./executable_script
 .xonshrc               # vim ~/.xonshrc
 ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
 git                    # git
-./git                  # ls ./git
+./git                  # cd ./git
 ```
 
 ## Default actions
