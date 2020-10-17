@@ -15,6 +15,8 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 
 ## Examples
 ```bash
+# Run:                 # Action that will be executed:
+                       
 /                      # ls /
 .xonshrc               # vim ~/.xonshrc
 ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
