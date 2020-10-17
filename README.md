@@ -15,14 +15,13 @@ echo 'xontrib load onepath' >> ~/.xonshrc
 
 ## Examples
 ```bash
-# Run:                 # Action that will be executed:
-                       
-/                      # ls /
+# Run:                 # Action that will be executed:                       
+/                      # cd /
+executable_script      # ./executable_script
 .xonshrc               # vim ~/.xonshrc
 ~/Downloads/logo.png   # xdg-open ~/Downloads/logo.png
 git                    # git
 ./git                  # ls ./git
-executable_script      # ./executable_script
 ```
 
 ## Default actions
@@ -31,7 +30,7 @@ In other case the typed path will be used to make action. Default actions:
 
 | Priority | Type  | Action  |
 |---|---|---|
-| 1 | `<DIR>`  | `ls`  | 
+| 1 | `<DIR>`  | `cd`  | 
 | 2 | `<XFILE>`  | `<RUN>`  | 
 | 3 | `text/` | `vim`|
 | 4 | `image/` | `xdg-open` |

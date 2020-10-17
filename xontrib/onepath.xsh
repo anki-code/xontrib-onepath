@@ -6,7 +6,7 @@ from shutil import which
 _env_actions = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
 if not _env_actions or type(_env_actions) != dict:
     _actions = {
-        '<DIR>': 'ls',
+        '<DIR>': 'cd',
         '<XFILE>': '<RUN>',
         'text/': 'vim'
     }
