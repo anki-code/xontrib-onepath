@@ -9,7 +9,7 @@ except (IOError, OSError):
 
 setup(
     name='xontrib-onepath',
-    version='0.3.0',
+    version='0.3.1',
     license='BSD',
     author='anki',
     author_email='author@example.com',
@@ -20,7 +20,7 @@ setup(
     install_requires=['xonsh', 'python-magic'],
     packages=['xontrib'],
     package_dir={'xontrib': 'xontrib'},
-    package_data={'xontrib': ['*.xsh']},
+    package_data={'xontrib': ['*.py']},
     platforms='any',
     url='https://github.com/anki-code/xontrib-onepath',
     project_urls={
