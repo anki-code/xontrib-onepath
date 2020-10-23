@@ -111,3 +111,7 @@ sudo umount /d
 sudo mount -o uid=1000,gid=1000,dmask=027,fmask=137 /d 
 ls -la /d
 ```
+
+## Links 
+* This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
+* This package was created with [xontrib cookiecutter template](https://github.com/xonsh/xontrib-cookiecutter).
