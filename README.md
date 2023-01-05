@@ -101,6 +101,11 @@ $XONTRIB_ONEPATH_ACTIONS['<DIR>'] = 'cdls'
 ```
 
 ## Known issues
+
+### ImportError: failed to find libmagic
+
+Install libmagic: `brew install libmagic`.
+
 ### NTFS in Linux: all files have execute permission
 If you mount NTFS partition with default permissions then all files will have execute permission 
 and `onepath` will execute them instead of action. The right way 
