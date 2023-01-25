@@ -117,6 +117,14 @@ sudo mount -o uid=1000,gid=1000,dmask=027,fmask=137 /d
 ls -la /d
 ```
 
+### MacOS and GNU tools
+As described in [xonsh-cheatsheet](https://github.com/anki-code/xonsh-cheatsheet) - on Mac we also recommend to install [GNU coreutils](https://www.gnu.org/software/coreutils/) to use the Linux default tools (i.e. `ls`, `grep`):
+```xsh
+brew install coreutils
+$PATH.append('/opt/homebrew/opt/coreutils/libexec/gnubin')  # add to ~/.xonshrc
+```
+
+
 ## Links 
 * This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
 * This package was created with [xontrib template](https://github.com/xonsh/xontrib-template).
