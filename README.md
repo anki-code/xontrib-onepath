@@ -43,6 +43,8 @@ You can add platform and tool depend actions:
 import shutil as _shutil
 from xonsh.platform import ON_LINUX #, ON_DARWIN, ON_WINDOWS, ON_WSL, IN_APPIMAGE, ON_CYGWIN, ON_MSYS, ON_POSIX, ON_FREEBSD, ON_DRAGONFLY, ON_NETBSD, ON_OPENBSD
 
+xontrib load onepath
+
 if ON_LINUX and _shutil.which('nvim'):
     $XONTRIB_ONEPATH_ACTIONS['text/'] = 'nvim'
 ```
