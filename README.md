@@ -35,7 +35,17 @@ In other case the typed path will be used to make action. Default actions:
 | 3 | `text/` | `vim`|
 | 4 | `image/` | `xdg-open` |
 
-Help to add more types and best default actions. PRs are welcome!
+#### Help to add more types and best default actions. PRs are welcome!
+
+You can add platform and tool depend actions:
+
+```xsh
+import shutil as _shutil
+from xonsh.platform import ON_LINUX #, ON_DARWIN, ON_WINDOWS, ON_WSL, IN_APPIMAGE, ON_CYGWIN, ON_MSYS, ON_POSIX, ON_FREEBSD, ON_DRAGONFLY, ON_NETBSD, ON_OPENBSD
+
+if ON_LINUX and _shutil.which('nvim'):
+    $XONTRIB_ONEPATH_ACTIONS['text/'] = 'nvim'
+```
 
 ## File types
 
