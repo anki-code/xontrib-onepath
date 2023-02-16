@@ -1,3 +1,5 @@
+"""Associate files and directories with app or alias and run it without preceding commands in xonsh shell. """
+
 import os, shlex
 from magic import from_file as mime
 from pathlib import Path
