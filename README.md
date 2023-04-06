@@ -3,7 +3,7 @@ When you click to a file or folder in graphical OS they will be opened in associ
 </p>
 
 <p align="center">  
-If you like the idea of bar theme click ⭐ on the repo and stay tuned by watching releases.
+If you like the idea click ⭐ on the repo and <a href="https://twitter.com/intent/tweet?text=Nice%20xontrib%20for%20the%20xonsh%20shell!&url=https://github.com/anki-code/xontrib-prompt-bar" target="_blank">tweet</a>.
 </p>
 
 ## Install
