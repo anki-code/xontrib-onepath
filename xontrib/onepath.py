@@ -8,16 +8,10 @@ from pprint import pprint
 
 _env_actions = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
 if not _env_actions or type(_env_actions) != dict:
-    _actions = {
+    __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'] = {
         '<DIR>': 'cd',
         '<XFILE>': '<RUN>',
-        'text/': 'vim'
     }
-
-    if __xonsh__.env.get('DISPLAY', False):
-        _actions['image/'] = 'xdg-open'
-
-    __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'] = _actions
 
 
 def _get_subproc_output(cmds, debug=False):
