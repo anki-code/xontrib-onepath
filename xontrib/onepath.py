@@ -4,6 +4,7 @@ import os, shlex
 from magic import from_file as mime
 from pathlib import Path
 from shutil import which
+from pprint import pprint
 
 _env_actions = __xonsh__.env.get('XONTRIB_ONEPATH_ACTIONS')
 if not _env_actions or type(_env_actions) != dict:
@@ -50,20 +51,34 @@ def onepath(cmd, **kw):
         except IsADirectoryError:
             file_type = 'inode/directory'
 
-    file_type = '<DIR>' if file_type == 'inode/directory' else file_type
-    full_path = str(path)
-    path_filename = None if path.is_dir() else path.name
-    path_suffix_key = '*' + path.suffix
-    file_or_dir = '<FILE>' if path.is_file() else '<DIR>'
-    xfile = '<XFILE>' if path.is_file() and os.access(path, os.X_OK) else '<NX>'
-    file_type_group = file_type.split('/')[0] + '/' if '/' in file_type else None
     path_suffix = path.suffix
-    file_type_suffix = file_type + path_suffix
+    file_types = {
+        'full_path': str(path),
+        'path_filename': None if path.is_dir() else path.name,
+        'path_suffix_key': '*' + path.suffix,
+        'file_type_suffix': file_type + path_suffix,
+        'file_type': '<DIR>' if file_type == 'inode/directory' else file_type,
+        'file_type_group': file_type.split('/')[0] + '/' if '/' in file_type else None,
+        'file_or_dir': '<FILE>' if path.is_file() else '<DIR>',
+        'xfile': '<XFILE>' if path.is_file() and os.access(path, os.X_OK) else '<NX>',
+        'any': '*'
+    }
+    
+    if debug:
+        print(f'xontrib-onepath: types for {path}:')
+        pprint(file_types, sort_dicts=False)
+    
     action = None
     for k in __xonsh__.env['XONTRIB_ONEPATH_ACTIONS']:
-        if k in [full_path, path_filename, path_suffix_key, file_type_suffix, file_type, file_type_group, file_or_dir, xfile, '*']:
-            action = __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'][k]
+        for name, tp in file_types.items():
+            if k == tp:
+                action = __xonsh__.env['XONTRIB_ONEPATH_ACTIONS'][k]
+                if debug:
+                    print(f'xontrib-onepath: selected action for {path}: name={repr(name)}, type={repr(k)}, action={repr(action)}')            
+                break
+        if action:
             break
+
 
     if action:
         if action == '<RUN>':
