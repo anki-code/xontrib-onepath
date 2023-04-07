@@ -73,6 +73,7 @@ If you need more complex actions use [callable xonsh aliases](https://xon.sh/tut
 
 ### Simple actions
 ```python
+$XONTRIB_ONEPATH_ACTIONS['text/'] = 'vim'            # Use vim to open any text file
 $XONTRIB_ONEPATH_ACTIONS['.xonshrc'] = 'vim'         # vim for `.xonshrc` file
 $XONTRIB_ONEPATH_ACTIONS['*.log'] = 'tail'           # tail for text type *.log files
 $XONTRIB_ONEPATH_ACTIONS['text/plain.txt'] = 'less'  # less for plain text *.txt files 
@@ -111,6 +112,10 @@ del _cdls
 
 $XONTRIB_ONEPATH_ACTIONS['<DIR>'] = 'cdls'
 ```
+
+## Debug
+
+To enable debug mode run `$XONTRIB_ONEPATH_DEBUG = True`.
 
 ## Known issues
 
